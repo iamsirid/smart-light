@@ -40,14 +40,6 @@ let tempData = [
   }
 ];
 
-if (production) {
-  app.use(express.static(path.resolve(__dirname, "client", "build")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
-
 app.get("/api/get/data", (req, res) => {
   res.send(tempData);
 });
@@ -157,6 +149,14 @@ app.put("/api/invoke", (req, res) => {
 
   res.send(null);
 });
+
+if (production) {
+  app.use(express.static(path.resolve(__dirname, "client", "build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5008;
 
