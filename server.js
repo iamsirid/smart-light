@@ -44,7 +44,7 @@ app.get("/api/get/data", (req, res) => {
   res.send(tempData);
 });
 
-app.post("/api/updateData", (req, res) => {
+app.post("/api/update-data", (req, res) => {
   console.log(req.body);
   let keys = Object.keys(req.body);
   for (let i = 0; i < keys.length; i++) {
