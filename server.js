@@ -53,14 +53,14 @@ app.post("/api/updateData", (req, res) => {
     if (key[0] === "L") {
       tempData[key[3]] = {
         ...tempData[key[3]],
-        isOn: req.body[key]
+        isOn: parseInt(req.body[key])
         //   isOn: parseInt(command[7])
       };
     } else if (key[0] === "M") {
       tempData[key[3]] = {
         ...tempData[key[3]],
         //   mode: parseInt(command[7])
-        mode: req.body[key]
+        mode: parseInt(req.body[key])
       };
     }
   }
