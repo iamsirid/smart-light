@@ -171,23 +171,24 @@ class Widget extends Component {
               <div className="price col-md-6">
                 <h5>Light Number: {this.props.ledId}</h5>
               </div>
-              <div className="rating hidden-sm col-md-6">
+              <div className="rating  col-md-6">
                 <h5
                   className={this.props.isOn ? "text-success" : "text-danger"}
                 >
-                  {this.props.isOn ? "ON" : "OFF"}
+                  {this.props.isOn ? "ON" : "OFF"}{" "}
+                  {this.props.mode === 2 ? " (AUTO)" : ""}
                 </h5>
               </div>
             </div>
             <div className="separator clear-left row p-1">
-              <div className="col-lg-6">
+              <div className="col-sm-6">
                 <img
                   src={this.props.isOn ? lightOn : lightOff}
                   height="150"
                   width="150"
                 />
               </div>
-              <div className="col-lg-6">
+              <div className="col-sm-6">
                 <div className="mt-4">{onOffButton}</div>
                 <div className="mt-4">{modeButton}</div>
               </div>
