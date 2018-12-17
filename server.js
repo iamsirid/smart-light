@@ -65,7 +65,8 @@ app.post("/api/updateData", (req, res) => {
     }
   }
 
-  console.log(tempData);
+  //   console.log(tempData);
+  res.send({ msg: "Update success" });
 });
 // app.get("/api/get/led1", (req, res) => {
 //   //   console.log(req.body);
