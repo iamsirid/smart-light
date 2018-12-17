@@ -7,32 +7,32 @@ class App extends Component {
   state = {
     ledData: [
       {
-        mode: 99,
-        isOn: 99
+        mode: null,
+        isOn: null
       },
       {
-        mode: 1,
-        isOn: 0
+        mode: null,
+        isOn: null
       },
       {
-        mode: 1,
-        isOn: 0
+        mode: null,
+        isOn: null
       },
       {
-        mode: 1,
-        isOn: 0
+        mode: null,
+        isOn: null
       },
       {
-        mode: 1,
-        isOn: 0
+        mode: null,
+        isOn: null
       },
       {
-        mode: 1,
-        isOn: 0
+        mode: null,
+        isOn: null
       },
       {
-        mode: 1,
-        isOn: 0
+        mode: null,
+        isOn: null
       }
     ]
   };
@@ -42,6 +42,7 @@ class App extends Component {
       .get(`/api/get/data`)
       .then(res => {
         console.log("updateData");
+        console.log(res.data);
         this.setState(
           {
             ledData: res.data
