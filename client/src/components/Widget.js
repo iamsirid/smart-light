@@ -84,7 +84,11 @@ class Widget extends Component {
     let data = {};
     data[`LED${this.props.ledId}000${toOn}`] = "";
     axios
-      .put("/api/invoke", data)
+      // .put("/api/invoke", data)
+      .put(
+        "https://api.netpie.io/topic/JamebadboySmartHome/gearname/pieled?retain&auth=Fk0ypUis5lhwpnF:DDPv4N8qG1QbcEpOP7Xyg369l",
+        data
+      )
       .then(res => {
         console.log("res.data:");
         console.log(res.data);
@@ -101,7 +105,10 @@ class Widget extends Component {
     let data = {};
     data[`MOD${this.props.ledId}000${mode}`] = "";
     axios
-      .put("/api/invoke", data)
+      .put(
+        "https://api.netpie.io/topic/JamebadboySmartHome/gearname/pieled?retain&auth=Fk0ypUis5lhwpnF:DDPv4N8qG1QbcEpOP7Xyg369l",
+        data
+      )
       .then(res => {
         console.log("res.data:");
         console.log(res.data);
