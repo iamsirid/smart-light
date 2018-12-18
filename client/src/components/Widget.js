@@ -150,7 +150,7 @@ class Widget extends Component {
           Switch to auto
         </button>
       );
-    } else {
+    } else if (this.props.mode === 2) {
       modeButton = (
         <button
           className="btn btn-success"
