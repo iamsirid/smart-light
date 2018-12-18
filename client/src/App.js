@@ -5,6 +5,7 @@ import Widget from "./components/Widget";
 import axios from "axios";
 class App extends Component {
   state = {
+    isNull: true,
     ledData: [
       {
         mode: null,
@@ -38,19 +39,46 @@ class App extends Component {
   };
 
   updateData = () => {
+    const setStateAndLoop = data => {
+      this.setState(
+        {
+          ledData: data
+        },
+        () => {
+          setTimeout(() => this.updateData(), 1000);
+        }
+      );
+    };
     axios
       .get(`/api/get/data`)
       .then(res => {
         console.log("updateData");
         console.log(res.data);
-        this.setState(
-          {
-            ledData: res.data
-          },
-          () => {
-            setTimeout(() => this.updateData(), 1000);
-          }
-        );
+        let haveNull = false;
+        res.data.foreach(e => {
+          if (e.mode == null) haveNull = true;
+        });
+        if (haveNull) {
+          let data = {};
+          data[`MOD60001`] = "";
+          axios
+            .put(
+              "https://api.netpie.io/topic/JamebadboySmartHome/gearname/pieled?retain&auth=Fk0ypUis5lhwpnF:DDPv4N8qG1QbcEpOP7Xyg369l",
+              data
+            )
+            .then(res => {
+              console.log("res.data:");
+              console.log(res.data);
+              setStateAndLoop(res.data);
+
+              // this.checkMode(null);
+            })
+            .catch(err => {
+              console.log(err.response.data);
+            });
+        } else {
+          setStateAndLoop(res.data);
+        }
       })
       .catch(err => {
         console.log(err.response);
