@@ -66,9 +66,9 @@ class App extends Component {
               "https://api.netpie.io/topic/JamebadboySmartHome/gearname/pieled?retain&auth=Fk0ypUis5lhwpnF:DDPv4N8qG1QbcEpOP7Xyg369l",
               data
             )
-            .then(res => {
+            .then(res2 => {
               console.log("res.data:");
-              console.log(res.data);
+              console.log(res2.data);
               setStateAndLoop(res.data);
 
               // this.checkMode(null);
